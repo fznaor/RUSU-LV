@@ -1,0 +1,1 @@
+Ovaj repozitorij sadrži python skriptu koja broji koliko puta se pojedina riječ pojavljuje u tekstualnoj datatoteci. Rezultat bi trebao biti dictionary gdje uz svaku riječ (key) stoji broj ponavljanja riječi (value). Međutim, skripta ima bugove i ne radi kako je zamišljeno.
