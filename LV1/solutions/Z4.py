@@ -8,7 +8,7 @@ Created on Mon Nov 16 13:58:00 2020
 suma = 0
 maxi = 0
 mini = 0
-n = 0
+n = 0 # broj unesenih brojeva
 
 while True:
     try:
@@ -19,7 +19,7 @@ while True:
     except ValueError:
         print('Niste unijeli broj, pokusajte ponovno')
         continue
-    if n == 0:
+    if n == 0: # postavljanje pocetne vrijednosti mini i maxi varijabli
         maxi = broj
         mini = broj
     elif broj < mini:
