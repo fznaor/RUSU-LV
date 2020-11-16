@@ -1,6 +1,6 @@
 # Raspoznavanje uzoraka i strojno učenje
 
-Ak.godina 2019./2020.
+Ak.godina 2020./2021.
 
 
 ## Laboratorijske vježbe
@@ -10,4 +10,4 @@ Ovaj repozitorij sadrži potrebne datoteke za izradu svake laboratorijske vježb
 
 ## Podaci o studentu:
 
-Ime i prezime:
+Ime i prezime: Filip Znaor
