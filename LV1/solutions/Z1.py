@@ -2,7 +2,7 @@
 """
 Created on Mon Nov 16 13:39:58 2020
 
-@author: student
+@author: Filip Znaor
 """
 
 sati = float(input('Unesite broj radnih sati: '))
