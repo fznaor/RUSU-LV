@@ -67,7 +67,7 @@ U zadatku je samostalno implementirano direktno rješenje regresijskog problema 
 ##### 3. zadatak
 U zadatku je samostalno implementiran iterativni algoritam linearne regresije te testiran za različite vrijednosti stope učenja. Premale vrijednosti stope učenja zahtijevaju vrlo velik broj iteracija za postizanje minimuma kriterijske funkcije, dok previsoke vrijednosti stope učenja rezultiraju divergencijom kriterijske funkcije prema beskonačnosti. Dobiveni rezultati koeficijenata (za odgovarajuće vrijednosti stope učenja poklapaju se s vrijednostima iz prethodnih zadataka).
 ##### 4. zadatak
-Razlika u dobivenim rezultatima je to da model bolje aproksimira zadanu funkciju zahvaljujući većem stupnju polinoma.
+Razlika u dobivenim rezultatima je to da model bolje aproksimira zadanu funkciju zahvaljujući većem stupnju polinoma, odnosno većem broju varijabli.
 ##### 5. zadatak
 Iz rezultata je vidljivo da povećanje stupnja polinoma rezultira boljim i preciznijim praćenjem zadane funkcije. Međutim, prevelik stupanj polinoma će overfittati podatke što je vidljivo u usporedbi stupnjeva 6 i 15, za zadani dataset stupanj 6 predstavlja najbolji kompromis između točnosti na trening i testnom skupu. Smanjivanje veličine trening skupa pogoršava točnost na testnom skupu, ali isti učinak ima i povećavanje veličine trening skupa na preveliku vrijednost (overfitting).
 ##### 6. zadatak
