@@ -21,37 +21,49 @@ y_measured = add_noise(y_true)
 x = x[:, np.newaxis]
 y_measured = y_measured[:, np.newaxis] 
 
-# make polynomial features
-poly = PolynomialFeatures(degree=15)
-xnew = poly.fit_transform(x) 
+degrees = [2, 6, 15]
+labels = ['Degree = 2', 'Degree = 6', 'Degree = 15']
+styles = ['r-', 'b-', 'y-']
 
-np.random.seed(12)
-indeksi = np.random.permutation(len(xnew))
-indeksi_train = indeksi[0:int(np.floor(0.7*len(xnew)))]
-indeksi_test = indeksi[int(np.floor(0.7*len(xnew)))+1:len(xnew)] 
+training_sizes = [0.5, 0.7, 0.9]
 
-xtrain = xnew[indeksi_train,]
-ytrain = y_measured[indeksi_train]
+for training_size in training_sizes:
+    plt.figure()
+    MSEtrain = []
+    MSEtest = []
+    
+    for i in range(3):
+        poly = PolynomialFeatures(degrees[i])
+        xnew = poly.fit_transform(x) 
+        
+        np.random.seed(12)
+        indeksi = np.random.permutation(len(xnew))
+        indeksi_train = indeksi[0:int(np.floor(training_size*len(xnew)))]
+        indeksi_test = indeksi[int(np.floor(training_size*len(xnew)))+1:len(xnew)] 
+        
+        xtrain = xnew[indeksi_train,]
+        ytrain = y_measured[indeksi_train]
+        
+        xtest = xnew[indeksi_test,]
+        ytest = y_measured[indeksi_test]
+        
+        linearModel = lm.LinearRegression()
+        linearModel.fit(xtrain,ytrain)
+        
+        ytest_p = linearModel.predict(xtest)
+        ytrain_p = linearModel.predict(xtrain)
+        MSEtest.append(mean_squared_error(ytest, ytest_p))
+        MSEtrain.append(mean_squared_error(ytrain, ytrain_p))
+        
+        plt.plot(x, linearModel.predict(xnew),styles[i],label=labels[i])
 
-xtest = xnew[indeksi_test,]
-ytest = y_measured[indeksi_test]
+    plt.plot(xtrain[:,1],ytrain,'ok',label='train')
+    plt.plot(x,y_true,label='f')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend(loc = 2) 
+    plt.title('Training size = ' + str(training_size * 100) + '%')
 
-linearModel = lm.LinearRegression()
-linearModel.fit(xtrain,ytrain)
-
-ytest_p = linearModel.predict(xtest)
-MSE_test = mean_squared_error(ytest, ytest_p)
-
-plt.figure(1)
-plt.plot(xtest[:,1],ytest_p,'og',label='predicted')
-plt.plot(xtest[:,1],ytest,'or',label='test')
-plt.legend(loc = 4) 
-
-#pozadinska funkcija vs model
-plt.figure(2)
-plt.plot(x,y_true,label='f')
-plt.plot(x, linearModel.predict(xnew),'r-',label='model')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.plot(xtrain[:,1],ytrain,'ok',label='train')
-plt.legend(loc = 4) 
+    print('Training size: ' + str(training_size))
+    print('MSEtrain = ' + str(MSEtrain))
+    print('MSEtest = ' + str(MSEtest))
